@@ -8,7 +8,4 @@ import org.springframework.stereotype.Service;
 public interface UserMapping {
     @Select("select * from user")
     public User selectAll();
-
-
-
 }
