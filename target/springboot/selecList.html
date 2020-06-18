@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="div_T">
+        <button onclick="check()">查询</button>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    function check(){
+        $.ajax({
+            type:'get',
+            url:'selectList',
+            data:{},
+            dataType:'json',
+            success:function(data){
+                var str = "";
+                str += "<table border='1'>";
+                $.each(data, function(index, item){
+                   str += "<tr><td>姓名</td><td>item.name</td></tr>";
+                   str += "<tr><td>性别</td><td>item.gender</td></tr>";
+                });
+
+                str += "</table>";
+                $("#div_T").append(str);
+            },
+            error:function(){
+                alert("查询失败！");
+            }
+        });
+    }
+</script>
